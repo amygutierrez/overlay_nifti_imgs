@@ -22,10 +22,10 @@ opts = dict(name=NAME,
             install_requires=REQUIREMENTS,
             python_requires=PYTHON_REQUIRES)
 
-if __name__ == '__main__':
-    setup(entry_points = {
+#if __name__ == '__main__':
+setup(entry_points = {
               'console_scripts': [
-                  'overlay_nifti = overlay_nifti_imgs.main:cli',
+                  'overlay_nifti = main:cli',
                   ]
           },
           **opts
