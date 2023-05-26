@@ -2,7 +2,7 @@ from importlib.metadata import entry_points
 import os
 from setuptools import setup, find_packages
 
-ver_file = 'info.py'
+ver_file = os.path.join('src', 'info.py')
 os.path.realpath
 with open(ver_file) as f:
     exec(f.read())
@@ -18,15 +18,15 @@ opts = dict(name=NAME,
             author_email=AUTHOR_EMAIL,
             platforms=PLATFORMS,
             version=VERSION,
-            packages=find_packages(),
+            packages=find_packages('overlay_nifti_imgs'),
             install_requires=REQUIREMENTS,
             python_requires=PYTHON_REQUIRES)
 
 #if __name__ == '__main__':
 setup(entry_points = {
               'console_scripts': [
-                  'overlay_nifti = main:cli',
-                  ]
+                  'overlay_nifti = src.overlay_nifti:overlay_nifti',
+                  ],
           },
           **opts
     )

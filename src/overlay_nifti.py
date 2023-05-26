@@ -44,10 +44,12 @@ def process_option(ctx, param, value):
         return [val.strip() for val in values]
 
 @click.command()
-@click.option('--anat','-a', nargs=1, type=str, help='Path to anatomical nifti '
-             'image that will be the underlay brain image. This image '
-             'is usuallu in MNI152 template space')
-@click.option('--overlay','-o', callback=process_option, help='Path to nifti '
+@click.option('--anat','-a', nargs=1, type=str, required=True, 
+              help='Path to anatomical nifti image that will' 
+              'be the underlay brain image. This image '
+              'is usuallu in MNI152 template space')
+@click.option('--overlay','-o', required=True, 
+              callback=process_option, help='Path to nifti '
              'image that will overlay the anatimcal image.')
 
 def overlay_nifti(anat=None, overlay=None):
@@ -57,8 +59,6 @@ def overlay_nifti(anat=None, overlay=None):
     body_html = ''
 
     for overlay_img in overlay:
-        if not os.path.exists('tmp'):
-            os.mkdir('tmp')
         overlay_name = (os.path.basename(overlay_img)).replace('.nii.gz', '')
 
         title = f'{anat_name} image\n with overlay\n {overlay_name}'
@@ -74,3 +74,7 @@ def overlay_nifti(anat=None, overlay=None):
         body_html += write_html(html, title)
 
     setup_browser(body_html)
+
+
+if __name__ == '__main__':
+    overlay_nifti()
