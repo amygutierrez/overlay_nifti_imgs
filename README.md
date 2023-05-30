@@ -49,3 +49,10 @@ overlay_nifti --anat /home/username/space-MNI152NLin6ASym_desc-head_T1w.nii.gz -
 ```
 python3 /path/to/repo/overlay_nifti_imgs/overlay_nifti.py --anat /home/username/space-MNI152NLin6ASym_desc-head_T1w.nii.gz --overlay /home/username/space-MNI152NLin6ASym_desc-brain_mask.nii.gz,/home/username/space-MNI152NLin6ASym_label-CSF_mask.nii.gz,/home/username/space-MNI152NLin6ASym_label-WN_mask.nii.gz
 ```
+
+<b>Uninstall</b>
+---------------
+To uninstall, simply
+```
+pip uninstall overlay_nifti_imgs
+```
