@@ -43,7 +43,7 @@ overlay_nifti --anat /home/username/space-MNI152NLin6ASym_desc-head_T1w.nii.gz -
 ```
 overlay_nifti --anat /home/username/space-MNI152NLin6ASym_desc-head_T1w.nii.gz --overlay /home/username/space-MNI152NLin6ASym_desc-brain_mask.nii.gz,/home/username/space-MNI152NLin6ASym_label-CSF_mask.nii.gz,/home/username/space-MNI152NLin6ASym_label-WN_mask.nii.gz --nobroswer --save /home/username/overlay_report.html
 ```
- ** Notice, if you will need to add the flags `nobrowser` *and* `--save /path/to/file.html` 
+ ** Notice, if you will need to add the flags `--nobrowser` *and* `--save /path/to/file.html` 
 
 - If you cannot pip install on system and have decided to clone this repo instead, you can still use the tool:
 ```
