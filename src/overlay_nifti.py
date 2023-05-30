@@ -50,7 +50,7 @@ def process_option(ctx, param, value):
 
 @click.command()
 @click.option('--anat','-a', nargs=1, type=str, required=True, 
-              help='Path to anatomical nifti image that will' 
+              help='Path to anatomical nifti image that will ' 
               'be the underlay brain image. This image '
               'is usuallu in MNI152 template space')
 @click.option('--overlay','-o', required=True, 
