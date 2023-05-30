@@ -32,7 +32,7 @@ Documentation
 User documentation can be found here: https://github.com/amygutierrez/overlay_nifti_imgs
 """
 
-NAME = 'overlay_nifti'
+NAME = 'overlay_nifti_imgs'
 MAINTAINER = "C-PAC developers"
 MAINTAINER_EMAIL = "CNL@childmind.org"
 DESCRIPTION = description

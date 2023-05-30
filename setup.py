@@ -18,7 +18,7 @@ opts = dict(name=NAME,
             author_email=AUTHOR_EMAIL,
             platforms=PLATFORMS,
             version=VERSION,
-            packages=find_packages('overlay_nifti_imgs'),
+            packages=find_packages(),
             install_requires=REQUIREMENTS,
             python_requires=PYTHON_REQUIRES)
 
