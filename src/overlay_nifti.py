@@ -20,7 +20,7 @@ def write_html(html, title):
     """
     return body
 
-def setup_browser(body):
+def setup_browser(body, nobrowser, save):
 
     html_template = f"""
     <html>
@@ -30,11 +30,16 @@ def setup_browser(body):
     </body>
     </html>
     """
-
-    with tempfile.NamedTemporaryFile(suffix='.html', delete=False) as temp_file:
-        temp_file.write(html_template.encode('utf-8'))
-        filename = 'file:///'+ temp_file.name
-        webbrowser.open_new_tab(filename)
+    
+    if nobrowser or save:
+        file = open(save, "w")
+        file .write(html_template)
+        file.close
+    elif not nobrowser and not save:
+        with tempfile.NamedTemporaryFile(suffix='.html', delete=False) as temp_file:
+            temp_file.write(html_template.encode('utf-8'))
+            filename = 'file:///'+ temp_file.name
+            webbrowser.open_new_tab(filename)
     
     return
 
@@ -51,8 +56,22 @@ def process_option(ctx, param, value):
 @click.option('--overlay','-o', required=True, 
               callback=process_option, help='Path to nifti '
              'image that will overlay the anatimcal image.')
+@click.option('--nobrowser', is_flag=True, help='Please add this '
+              'flag if you are not on a system that has a web '
+              'broweser.')
+@click.option('--save', type=str, help='If you would like to save '
+              'the html report automatically, supply the name and '
+              'path name for the report.')
 
-def overlay_nifti(anat=None, overlay=None):
+def overlay_nifti(anat=None, overlay=None, nobrowser=False, save=None):
+    if nobrowser and not save:
+        raise Exception("""
+                        You selected flag `--nobroswer`, but did not 
+                        add where to save the html report. Please add 
+                        path and file name using `--save` flag. 
+                        Example: 
+                        `--save /path/to/file.html`
+                        """)
     click.echo("\n***** overlaying your images  ＼＿ﾍ(◕‿◕✰)  *******")
 
     anat_name = (os.path.basename(anat)).replace('.nii.gz', '')
@@ -73,7 +92,7 @@ def overlay_nifti(anat=None, overlay=None):
         
         body_html += write_html(html, title)
 
-    setup_browser(body_html)
+    setup_browser(body_html, nobrowser, save)
 
 
 if __name__ == '__main__':
