@@ -25,7 +25,7 @@ opts = dict(name=NAME,
 if __name__ == '__main__':
     setup(entry_points = {
               'console_scripts': [
-                  'overlay_nifti = overlay_nifti_imgs.cli.overlay_nifti:overlay_nifti',
+                  'overlay_nifti = cli.overlay_nifti:overlay_nifti',
                   ]
           },
           **opts
