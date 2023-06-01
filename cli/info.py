@@ -49,8 +49,8 @@ ISRELEASE = _version_extra == ''
 VERSION = __version__
 PYTHON_REQUIRES = ">= 3.5"
 REQUIREMENTS = [
-    "matplotlib>=3.7.1",
+    "matplotlib>=3.3.4",
     "mpld3>=0.5.9",
-    "nilearn>=0.10.1",
+    "nilearn>=0.9.2",
     "click>=8.1.3",
 ]

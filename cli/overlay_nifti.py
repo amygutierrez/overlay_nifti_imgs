@@ -83,10 +83,10 @@ def overlay_nifti(anat=None, overlay=None, nobrowser=False, save=None):
         title = f'{anat_name} image\n with overlay\n {overlay_name}'
 
         fig= plt.figure(figsize=(5,3))
-        display = plotting.plot_img(anat,  cmap=mpl.colormaps['gray'], 
+        display = plotting.plot_img(anat,  cmap=mpl.cm.get_cmap('gray'), 
                                      cut_coords=[0,0,0], figure=fig, 
-                                     display_mode='ortho', draw_cross=False)
-        display.add_overlay(overlay_img, cmap=plotting.cm.red_transparent, colorbar=True)
+                                     display_mode='ortho', alpha=1, draw_cross=False)
+        display.add_overlay(overlay_img, cmap=plotting.cm.red_transparent, alpha=0.5, colorbar=True)
         
         html = mpld3.fig_to_html(fig)
         
